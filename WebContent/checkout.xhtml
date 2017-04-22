@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+
+<ui:composition template="/WEB-INF/templates/BodyLayoutTemplate.xhtml">
+	<ui:define name="content">
+		<h:form>
+
+			<h:dataTable styleClass="productInfoTableClass"
+				value="#{productBean.products}" var="product">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText styleClass="heading3" value="Name" />
+					</f:facet>
+					<h:outputText value="#{product.name}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText styleClass="heading3" value="Unit Price" />
+					</f:facet>
+					<h:outputText value="#{product.unit_price}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText styleClass="heading3" value="Special Quantity" />
+					</f:facet>
+					<h:outputText value="#{product.special_qty}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText styleClass="heading3" value="Special Price" />
+					</f:facet>
+					<h:outputText value="#{product.special_price}" />
+				</h:column>
+			</h:dataTable>
+			<h:panelGrid>
+				<div id="headerId">Order and Check Out</div>
+			</h:panelGrid>
+
+			<h:panelGrid columns="2">
+				<h:outputText value="Select Product: "></h:outputText>
+				<h:selectOneMenu id="list"
+					value="#{productBean.selectedProductName}"
+					valueChangeListener="#{productBean.valueChanged}"
+					onchange="submit()">
+					<f:selectItems value="#{productBean.products}" var="p"
+						itemValue="#{p.name}" itemLabel="#{p.name}" />
+				</h:selectOneMenu>
+
+				<h:outputText value="Quantity : "></h:outputText>
+				<h:inputText value="#{productBean.selectedProductQuantity}"></h:inputText>
+				<h:commandButton value="Add Product"
+					action="#{productBean.addProduct(productBean.selectedProductName, productBean.selectedProductQuantity)}" />
+				<h:commandButton value="Check Out" action="#{productBean.checkOut}" />
+			</h:panelGrid>
+
+
+			<h:panelGroup id="orderedProductPanel" width="100%"
+				rendered="#{not empty productBean.selectedProducts}">
+				<h:panelGrid width="100%">
+
+					<h:dataTable styleClass="orderedProductTableClass"
+						value="#{productBean.selectedProducts}" var="selProduct">
+						<h:column>
+							<f:facet name="header">
+								<h:outputText styleClass="heading3" value="Name" />
+							</f:facet>
+							<h:outputText value="#{selProduct.name}" />
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText styleClass="heading3" value="Quantity" />
+							</f:facet>
+							<h:outputText value="#{selProduct.orderQuantity}" />
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText styleClass="heading3" value="Price" />
+							</f:facet>
+							<h:outputText value="#{selProduct.orderProductPrice}" />
+						</h:column>
+					</h:dataTable>
+				</h:panelGrid>
+
+			</h:panelGroup>
+			<h:panelGrid columns="2">
+				<h:outputText value="Amount Due: "></h:outputText>
+				<h:outputText value="#{productBean.totalAmountPayable}" />
+			</h:panelGrid>
+
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

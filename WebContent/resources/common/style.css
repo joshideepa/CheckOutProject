@@ -1,0 +1,31 @@
+#headerId {
+	width: 100%;
+	font-size: 18px;
+	line-height: 25px;
+	background-color: navy;
+	color: white
+}
+
+.productInfoTableClass {
+	width: 100%;
+	border: 1px thin blue;
+	background-color: silver;
+	border-bottom: medium solid black;
+	text-align: center;
+}
+
+.productInfoTableClass tr:nth-child(odd) {
+	background-color: #f2f2f2
+}
+
+.orderedProductTableClass {
+	width: 100%;
+	border: 1px thin blue;
+	background-color: silver;
+	border-bottom: medium solid black;
+	text-align: center;
+}
+
+.orderedProductTableClass tr:nth-child(odd) {
+	background-color: #f2f2f2
+}

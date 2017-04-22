@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf14927731453080" configfile="/CheckOutProject/WebContent/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="WEB-INF/login.xhtml" x="84" y="12" id="pf14927752647269" path="/WEB-INF/login.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="WEB-INF/welcome.xhtml" x="368" y="232" id="pf149277526472610" path="/WEB-INF/welcome.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="checkout.xhtml" id="pf149277526472611" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf149277526472612" path="/checkout.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="welcome.xhtml" id="pf149277526472713" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf149277526472612" path="/welcome.xhtml"/>
+  <links id="pf149277526472612" target="pf149277526472713" source="pf149277526472611" outcome="login"/>
+</pageflow:Pageflow>
